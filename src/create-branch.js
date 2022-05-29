@@ -5,8 +5,7 @@ const fs = require('fs');
 async function run() {
     try {
         // Get authenticated GitHub client 
-        //const github = new GitHub(process.env.GITHUB_TOKEN);
-        const gh = new github.getOctokit(process.env.GITHUB_TOKEN);
+        const gh = github.getOctokit(process.env.GITHUB_TOKEN);
 
         // Get the owner and repo from the github context
         const { currentOwner, currentRepo } = context.repo;
