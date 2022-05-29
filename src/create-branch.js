@@ -5,7 +5,7 @@ const github = require('@actions/github');
 const fs = require('fs');
 
 async function run() {
-    try {
+   // try {
         // Get authenticated GitHub client 
         const gh = github.getOctokit(process.env.GITHUB_TOKEN);
 
@@ -44,9 +44,9 @@ async function run() {
         // Set the output
         core.setOutput('branch_name', branch);
         core.setOutput('branch_url', `https://github.com/${owner}/${repo}/tree/${branch}`);
-    } catch (error) {
-        core.setFailed("catch error:", error.message);
-    }
+    // } catch (error) {
+    //     core.setFailed("catch error:", error.message);
+    // }
 }
 
 module.exports = run;

@@ -8701,7 +8701,7 @@ const github = __nccwpck_require__(5438);
 const fs = __nccwpck_require__(7147);
 
 async function run() {
-    try {
+   // try {
         // Get authenticated GitHub client 
         const gh = github.getOctokit(process.env.GITHUB_TOKEN);
 
@@ -8740,9 +8740,9 @@ async function run() {
         // Set the output
         core.setOutput('branch_name', branch);
         core.setOutput('branch_url', `https://github.com/${owner}/${repo}/tree/${branch}`);
-    } catch (error) {
-        core.setFailed("catch error:", error.message);
-    }
+    // } catch (error) {
+    //     core.setFailed("catch error:", error.message);
+    // }
 }
 
 module.exports = run;
