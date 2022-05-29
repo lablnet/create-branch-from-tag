@@ -8721,15 +8721,15 @@ async function run() {
         core.info(`Creating branch ${branch}`);
         
         // check if the branch already exists
-        const { data: existingBranch } = await gh.rest.repos.getBranch({
-            owner,
-            repo,
-            branch: branch
-        });
-        if (existingBranch) {
-            core.setFailed(`Branch ${branch} already exists`);
-            return;
-        }
+        // const { data: existingBranch } = await gh.rest.repos.getBranch({
+        //     owner,
+        //     repo,
+        //     branch: branch
+        // });
+        // if (existingBranch) {
+        //     core.setFailed(`Branch ${branch} already exists`);
+        //     return;
+        // }
 
         core.info(`Owner ${owner}`);
         core.info(`Repo ${repo}`);
