@@ -38,7 +38,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Create Branch
         id: create_branch
-        uses: lablnet/create-branch-from-tag@v1
+        uses: lablnet/create-branch-from-tag@v1.0.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:

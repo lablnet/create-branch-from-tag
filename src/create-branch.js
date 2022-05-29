@@ -22,17 +22,22 @@ async function run() {
         // Create the branch
         const branch = `release@${tag}`;
 
+        core.info(`Creating branch ${branch}`);
+        
         // check if the branch already exists
-        // const { data: existingBranch } = await gh.rest.repos.getBranch({
-        //     owner,
-        //     repo,
-        //     branch: branch
-        // });
-        // if (existingBranch) {
-        //     core.setFailed(`Branch ${branch} already exists`);
-        //     return;
-        // }
+        const { data: existingBranch } = await gh.rest.repos.getBranch({
+            owner,
+            repo,
+            branch: branch
+        });
+        if (existingBranch) {
+            core.setFailed(`Branch ${branch} already exists`);
+            return;
+        }
 
+        core.info(`Owner ${owner}`);
+        core.info(`Repo ${repo}`);
+        core.info(`sha ${context.sha}`);
         // Create the branch
         await gh.rest.git.createRef({
             owner,
