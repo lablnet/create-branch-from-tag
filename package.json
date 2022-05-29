@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "ncc build src/main.js",
-    "precommit": "npm run build && git add dist/"
+    "precommit": "npm run build && git add dist/ -f"
   },
   "repository": {
     "type": "git",
