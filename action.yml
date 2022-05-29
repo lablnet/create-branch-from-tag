@@ -7,10 +7,10 @@ inputs:
     required: true
   owner:
     description: 'Owner of the repository if it is not the current one'
-    required: false
+    required: true
   repo:
     description: 'Repository on which to release.  Used only if you want to create the release on another repo'
-    required: false
+    required: true
 outputs:
   branch_name:
     description: 'The Branch Name of the created branch'

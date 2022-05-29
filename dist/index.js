@@ -8705,18 +8705,11 @@ async function run() {
         // Get authenticated GitHub client 
         const gh = github.getOctokit(process.env.GITHUB_TOKEN);
 
-        // Get the owner and repo from the github context
-        const { currentOwner, currentRepo } = context.repo;
-
-        core.info(`Owner ${currentOwner}`);
-        core.info(`Repo ${currentRepo}`);
-        core.info(`sha ${context.sha}`);
-
         // Get the input from the workflow file.
         let tag = core.getInput('tag_name', { required: true });
         tag = tag.replace(/^refs\/tags\//, '');
-        const owner = core.getInput('owner', { required: false }) || currentOwner;
-        const repo = core.getInput('repo', { required: false }) || currentRepo;
+        const owner = core.getInput('owner', { required: true });
+        const repo = core.getInput('repo', { required: true });
     
 
         // Create the branch
@@ -8724,16 +8717,16 @@ async function run() {
 
         core.info(`Creating branch ${branch}`);
         
-        // check if the branch already exists
-        // const { data: existingBranch } = await gh.rest.repos.getBranch({
-        //     owner,
-        //     repo,
-        //     branch: branch
-        // });
-        // if (existingBranch) {
-        //     core.setFailed(`Branch ${branch} already exists`);
-        //     return;
-        // }
+        // Check if the branch already exists
+        const { data: existingBranch } = await gh.rest.repos.getBranch({
+            owner,
+            repo,
+            branch: branch
+        });
+        if (existingBranch) {
+            core.setFailed(`Branch ${branch} already exists`);
+            return;
+        }
 
         core.info(`Owner ${owner}`);
         core.info(`Repo ${repo}`);
