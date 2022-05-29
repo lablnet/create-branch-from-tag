@@ -8710,22 +8710,24 @@ async function run() {
         tag = tag.replace(/^refs\/tags\//, '');
         const owner = core.getInput('owner', { required: true });
         const repo = core.getInput('repo', { required: true });
-    
+
 
         // Create the branch
         const branch = `release@${tag}`;
 
         core.info(`Creating branch ${branch}`);
-        
+
         // Check if the branch already exists
-        const { data: existingBranch } = await gh.rest.repos.getBranch({
-            owner,
-            repo,
-            branch: branch
-        });
-        if (existingBranch) {
+        try {
+            await gh.rest.repos.getBranch({
+                owner,
+                repo,
+                branch: branch
+            });
             core.setFailed(`Branch ${branch} already exists`);
             return;
+        } catch (e) {
+            // do nothing.
         }
 
         core.info(`Owner ${owner}`);
