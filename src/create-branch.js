@@ -1,5 +1,4 @@
 const core = require('@actions/core');
-const { context } = require('@actions/github');
 const github = require('@actions/github');
 
 const fs = require('fs');
@@ -10,7 +9,7 @@ async function run() {
         const gh = github.getOctokit(process.env.GITHUB_TOKEN);
 
         // Get the owner and repo from the github context
-        const { currentOwner, currentRepo } = context.repo;
+        const { currentOwner, currentRepo } = github.context.repo;
 
         // Get the input from the workflow file.
         let tag = core.getInput('tag_name', { required: true });

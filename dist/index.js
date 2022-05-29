@@ -8695,7 +8695,6 @@ function wrappy (fn, cb) {
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 const core = __nccwpck_require__(2186);
-const { context } = __nccwpck_require__(5438);
 const github = __nccwpck_require__(5438);
 
 const fs = __nccwpck_require__(7147);
@@ -8706,7 +8705,7 @@ async function run() {
         const gh = github.getOctokit(process.env.GITHUB_TOKEN);
 
         // Get the owner and repo from the github context
-        const { currentOwner, currentRepo } = context.repo;
+        const { currentOwner, currentRepo } = github.context.repo;
 
         // Get the input from the workflow file.
         let tag = core.getInput('tag_name', { required: true });
