@@ -8,11 +8,14 @@ async function run() {
         const github = new GitHub(process.env.GITHUB_TOKEN);
 
         // Get the owner and repo from the github context
-        const { owner, repo } = context.repo;
+        const { currentOwner, currentRepo } = context.repo;
 
         // Get the input from the workflow file.
         let tag = core.getInput('tag_name', { required: true });
         tag = tag.replace(/^refs\/tags\//, '');
+        const owner = core.getInput('owner', { required: false }) || currentOwner;
+        const repo = core.getInput('repo', { required: false }) || currentRepo;
+    
 
         // Create the branch
         const branch = `release@${tag}`;
