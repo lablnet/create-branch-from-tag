@@ -8719,7 +8719,7 @@ async function run() {
         const branch = `release@${tag}`;
 
         // check if the branch already exists
-        const { data: existingBranch } = await gh.repos.getBranch({
+        const { data: existingBranch } = await gh.rest.repos.getBranch({
             owner,
             repo,
             branch: branch
@@ -8730,7 +8730,7 @@ async function run() {
         }
 
         // Create the branch
-        await gh.git.createRef({
+        await gh.rest.git.createRef({
             owner,
             repo,
             ref: `refs/heads/${branch}`,
