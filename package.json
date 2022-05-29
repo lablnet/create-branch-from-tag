@@ -1,0 +1,24 @@
+{
+  "name": "create-branch-from-tag",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lablnet/create-branch-from-tag.git"
+  },
+  "keywords": [],
+  "author": "Muhammad Umer Farooq",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lablnet/create-branch-from-tag/issues"
+  },
+  "homepage": "https://github.com/lablnet/create-branch-from-tag#readme",
+  "dependencies": {
+    "@actions/core": "^1.8.2",
+    "@actions/github": "^5.0.3"
+  }
+}
