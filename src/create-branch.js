@@ -1,11 +1,12 @@
 const core = require('@actions/core');
-const { GitHub, context } = require('@actions/github');
+const { GitHub, context, github } = require('@actions/github');
 const fs = require('fs');
 
 async function run() {
     try {
         // Get authenticated GitHub client 
-        const github = new GitHub(process.env.GITHUB_TOKEN);
+        //const github = new GitHub(process.env.GITHUB_TOKEN);
+        const gh = new github.getOctokit(process.env.GITHUB_TOKEN);
 
         // Get the owner and repo from the github context
         const { currentOwner, currentRepo } = context.repo;
@@ -21,7 +22,7 @@ async function run() {
         const branch = `release@${tag}`;
 
         // check if the branch already exists
-        const { data: existingBranch } = await github.repos.getBranch({
+        const { data: existingBranch } = await gh.repos.getBranch({
             owner,
             repo,
             branch: branch
@@ -32,7 +33,7 @@ async function run() {
         }
 
         // Create the branch
-        await github.git.createRef({
+        await gh.git.createRef({
             owner,
             repo,
             ref: `refs/heads/${branch}`,
