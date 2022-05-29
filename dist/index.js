@@ -8695,13 +8695,14 @@ function wrappy (fn, cb) {
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 const core = __nccwpck_require__(2186);
-const { GitHub, context } = __nccwpck_require__(5438);
+const { GitHub, context, github } = __nccwpck_require__(5438);
 const fs = __nccwpck_require__(7147);
 
 async function run() {
     try {
         // Get authenticated GitHub client 
-        const github = new GitHub(process.env.GITHUB_TOKEN);
+        //const github = new GitHub(process.env.GITHUB_TOKEN);
+        const gh = new github.getOctokit(process.env.GITHUB_TOKEN);
 
         // Get the owner and repo from the github context
         const { currentOwner, currentRepo } = context.repo;
@@ -8717,7 +8718,7 @@ async function run() {
         const branch = `release@${tag}`;
 
         // check if the branch already exists
-        const { data: existingBranch } = await github.repos.getBranch({
+        const { data: existingBranch } = await gh.repos.getBranch({
             owner,
             repo,
             branch: branch
@@ -8728,7 +8729,7 @@ async function run() {
         }
 
         // Create the branch
-        await github.git.createRef({
+        await gh.git.createRef({
             owner,
             repo,
             ref: `refs/heads/${branch}`,
