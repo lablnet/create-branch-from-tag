@@ -45,7 +45,7 @@ async function run() {
         core.setOutput('branch_name', branch);
         core.setOutput('branch_url', `https://github.com/${owner}/${repo}/tree/${branch}`);
     } catch (error) {
-        core.setFailed(error.message);
+        core.setFailed("catch error:", error.message);
     }
 }
 
