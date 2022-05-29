@@ -1,0 +1,24 @@
+name: 'Create a Branch'
+description: 'Create a Branch from tag/release'
+author: 'Muhammad Umer Farooq'
+inputs:
+  tag_name:
+    description: 'The name of the tag. This should come from the webhook payload, `github.GITHUB_REF` when a user pushes a new tag'
+    required: true
+  owner:
+    description: 'Owner of the repository if it is not the current one'
+    required: false
+  repo:
+    description: 'Repository on which to release.  Used only if you want to create the release on another repo'
+    required: false
+outputs:
+  branch_name:
+    description: 'The Branch Name of the created branch'
+  branch_url:
+    description: 'The URL users can navigate to in order to view the branch'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
+branding:
+  icon: 'tag'
+  color: 'gray-dark'

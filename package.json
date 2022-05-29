@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "ncc build src/main.js",
+    "precommit": "npm run build && git add dist/"
   },
   "repository": {
     "type": "git",
@@ -19,6 +21,7 @@
   "homepage": "https://github.com/lablnet/create-branch-from-tag#readme",
   "dependencies": {
     "@actions/core": "^1.8.2",
-    "@actions/github": "^5.0.3"
+    "@actions/github": "^5.0.3",
+    "@vercel/ncc": "^0.34.0"
   }
 }
