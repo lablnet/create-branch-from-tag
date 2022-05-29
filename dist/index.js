@@ -8708,8 +8708,8 @@ async function run() {
         // Get the owner and repo from the github context
         const { currentOwner, currentRepo } = context.repo;
 
-        core.info(`Owner ${owner}`);
-        core.info(`Repo ${repo}`);
+        core.info(`Owner ${currentOwner}`);
+        core.info(`Repo ${currentRepo}`);
         core.info(`sha ${context.sha}`);
 
         // Get the input from the workflow file.
