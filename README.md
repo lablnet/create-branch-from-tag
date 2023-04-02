@@ -12,6 +12,7 @@ Create a workflow `.yml` file in your `.github/workflows` directory. An [example
 - `tag_name`: The name of the tag for this release
 - `owner`: The name of the owner of the repo. Used to identify the owner of the repository.  Used when cutting releases for external repositories.  Default: Current owner
 - `repo`: The name of the repository. Used to identify the repository on which to release.  Used when cutting releases for external repositories. Default: Current repository
+- `description`:  custom prefix for creating the branch. Default: `release@`
 
 ### Outputs
 - `branch_name`: The Branch Name
