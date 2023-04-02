@@ -11,6 +11,9 @@ inputs:
   repo:
     description: 'Repository on which to release.  Used only if you want to create the release on another repo'
     required: true
+  branch_prefix:
+    description: "The custom prefix for creating the branch. Default: release@"
+    required: false
 outputs:
   branch_name:
     description: 'The Branch Name of the created branch'

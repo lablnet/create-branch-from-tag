@@ -14,10 +14,11 @@ async function run() {
         tag = tag.replace(/^refs\/tags\//, '');
         const owner = core.getInput('owner', { required: true });
         const repo = core.getInput('repo', { required: true });
+        const branch_prefix = core.getInput('branch_prefix', { required: false });
 
 
         // Create the branch
-        const branch = `release@${tag}`;
+    const branch = `${branch_prefix ? branch_prefix : 'release@'} ${tag}`;
 
         core.info(`Creating branch ${branch}`);
 
