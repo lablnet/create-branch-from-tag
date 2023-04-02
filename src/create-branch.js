@@ -17,7 +17,6 @@ async function run() {
         const branch_prefix = core.getInput('branch_prefix', { required: false });
 
 
-
         // Create the branch
     const branch = `${branch_prefix ? branch_prefix : 'release@'} ${tag}`;
 
