@@ -20,7 +20,7 @@ outputs:
   branch_url:
     description: 'The URL users can navigate to in order to view the branch'
 runs:
-  using: 'node12'
+  using: 'node20'
   main: 'dist/index.js'
 branding:
   icon: 'tag'
