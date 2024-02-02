@@ -32,6 +32,8 @@ name: Create Branch
 
 jobs:
   build:
+    permissions: # Read more at : https://docs.github.com/en/actions/using-jobs/assigning-permissions-to-jobs
+      contents: write
     name: Create Branch
     runs-on: ubuntu-latest
     steps:
