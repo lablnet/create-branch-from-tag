@@ -28929,7 +28929,7 @@ async function run() {
 
 
         // Create the branch
-    const branch = `${branch_prefix ? branch_prefix : 'release@'} ${tag}`;
+        const branch = `${branch_prefix ? branch_prefix : 'release@'}${tag}`;
 
         core.info(`Creating branch ${branch}`);
 
@@ -28944,7 +28944,9 @@ async function run() {
             return;
         } catch (e) {
             // do nothing.
+            core.info(`Branch ${branch} does not exist`);
         }
+
 
         core.info(`Owner ${owner}`);
         core.info(`Repo ${repo}`);
